@@ -2,12 +2,12 @@
 apply from : "config.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.1.2-4'
+    ext.kotlin_version = '1.1.2-2'
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.3.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -16,14 +16,11 @@ buildscript {
 apply plugin: 'kotlin'
 
 allprojects {
+
     repositories {
         jcenter()
     }
 
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
 }
 
 repositories {
@@ -34,28 +31,3 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
 }
 
-
-def getVersionCode(boolean isRelease) {
-    // 正式环境
-    if (isRelease) {
-        ext.majorNumber * 1000000 + ext.minorNumber * 10000 + ext.revisionNumber
-    }
-    // debug环境
-    else {
-        Integer.parseInt(new Date().format("yyMMddHHmm"))
-    }
-}
-
-//Major_Version_Number.Minor_Version_Number[Revision_Number[.Build_Number]]
-def getVersionName(boolean isRelease) {
-    // 正式环境
-    if (isRelease) {
-        ext.majorNumber + "." + ext.minorNumber + "." + ext.revisionNumber + "." + ext.revisionDescription
-    }
-    // debug环境
-    else {
-        String today = new Date().format("yyMMdd")
-        String time = new Date().format("HHmmss")
-        ext.majorNumber + "." + ext.minorNumber + "." + ext.revisionNumber + ".$today.$time." + ext.revisionDescription
-    }
-}

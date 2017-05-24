@@ -10,10 +10,8 @@ import javax.inject.Singleton
  */
 
 @Module
-class CoreModule(val application : Application){
-
-    @Singleton
+class CoreModule(val app: Application) {
     @Provides
-    fun provideApplication() = application
-
+    @Singleton
+    fun provideApplication() = app
 }
