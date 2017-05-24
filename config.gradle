@@ -1,18 +1,32 @@
+def appcompat_v7_version = "25.3.1"
+def dagger_version = "2.11-rc2"
 ext {
+
     majorNumber = 1
     minorNumber = 0
     revisionNumber = 'git rev-list HEAD --count'.execute().getText().trim().toInteger()
     tempRevisionDescription = 'git describe --always'.execute().getText().trim()
     revisionDescription = (ext.tempRevisionDescription == null
-            || (ext.tempRevisionDescription).size() == 0 ) ?
+            || (ext.tempRevisionDescription).size() == 0) ?
             new Date().format("yyMMdd") :
             ext.tempRevisionDescription
+
     isDebug = true
     android = [
-            compileSdkVersion:25,
-            buildToolsVersion:"25.0.3",
-            minSdkVersion:16,
-            targetSdkVersion:25
+            compileSdkVersion: 25,
+            buildToolsVersion: "25.0.3",
+            minSdkVersion    : 16,
+            targetSdkVersion : 25
+    ]
+
+    dependencies = [
+            "appcompat-v7"  : "com.android.support:appcompat-v7:${appcompat_v7_version}",
+            "dagger"        : "com.google.dagger:dagger-android:${dagger_version}",
+            "dagger-android": "com.google.dagger:dagger-android-support:${dagger_version}",
+    ]
+
+    apt = [
+            "dagger-android-processor": "com.google.dagger:dagger-android-processor:${dagger_version}"
     ]
 }
 
