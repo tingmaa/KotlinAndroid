@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -51,16 +52,30 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile project(':configure')
+    compile project(':widget')
     compile rootProject.ext.dependencies["appcompat-v7"]
     compile rootProject.ext.dependencies["dagger"]
-    compile rootProject.ext.dependencies["dagger-android"]
-    compile rootProject.ext.dependencies["dagger-android-support"]
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile rootProject.ext.dependencies["retrofit"]
+    compile rootProject.ext.dependencies["retrofit-adapter"]
+    compile rootProject.ext.dependencies["retrofit-covert"]
+    compile rootProject.ext.dependencies["okhttp"]
+    compile rootProject.ext.dependencies["okhttp-logging"]
+    compile rootProject.ext.dependencies["okhttp-cache"]
+    compile rootProject.ext.dependencies["stetho"]
+    compile rootProject.ext.dependencies["stetho-okhttp"]
+    compile rootProject.ext.dependencies["rxkotlin"]
+    compile rootProject.ext.dependencies["rxjava"]
+    compile rootProject.ext.dependencies["rxandroid"]
+    compile rootProject.ext.dependencies["rxlifecycle"]
+    compile rootProject.ext.dependencies["rxlifecycle-component"]
     testCompile 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlin_version}"
     kapt rootProject.ext.apt["dagger-compiler"]
-    kapt rootProject.ext.apt["dagger-android-processor"]
+
 }

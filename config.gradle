@@ -1,5 +1,14 @@
-def appcompat_v7_version = "25.3.1"
-def dagger_version = "2.11-rc2"
+def appcompat_v7_version = "+"
+def dagger_version = "2.9"
+def retrofit_version = "2.3.0"
+def retrofit_covert_version = "2.1.0"
+def okhttp_version = "3.8.0"
+def okhttp_cache_version = "1.1.1"
+def stetho_version = "1.5.0"
+def rxkotlin_version = "2.0.3"
+def rxjava_version = "2.1.0"
+def rxandroid_version = "2.0.1"
+def rxlifecycle_version = "1.0"
 ext {
     isDebug = true
     android = [
@@ -10,15 +19,25 @@ ext {
     ]
 
     dependencies = [
-            "appcompat-v7"          : "com.android.support:appcompat-v7:${appcompat_v7_version}",
-            "dagger"                : "com.google.dagger:dagger:${dagger_version}",
-            "dagger-android"        : "com.google.dagger:dagger-android:${dagger_version}",
-            "dagger-android-support": "com.google.dagger:dagger-android-support:${dagger_version}",
+            "appcompat-v7"         : "com.android.support:appcompat-v7:${appcompat_v7_version}",
+            "dagger"               : "com.google.dagger:dagger:${dagger_version}",
+            "retrofit"             : "com.squareup.retrofit2:retrofit:${retrofit_version}",
+            "retrofit-adapter"     : "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}",
+            "retrofit-covert"      : "org.ligboy.retrofit2:converter-fastjson-android:${retrofit_covert_version}",
+            "okhttp"               : "com.squareup.okhttp3:okhttp:${okhttp_version}",
+            "okhttp-logging"       : "com.squareup.okhttp3:logging-interceptor:${okhttp_version}",
+            "okhttp-cache"         : "com.ncornette.cache:okcache-control:${okhttp_cache_version}",
+            "stetho"               : "com.facebook.stetho:stetho:${stetho_version}",
+            "stetho-okhttp"        : "com.facebook.stetho:stetho-okhttp3:${stetho_version}",
+            "rxkotlin"             : "io.reactivex.rxjava2:rxkotlin:${rxkotlin_version}",
+            "rxjava"               : "io.reactivex.rxjava2:rxjava:${rxjava_version}",
+            "rxandroid"            : "io.reactivex.rxjava2:rxandroid:${rxandroid_version}",
+            "rxlifecycle"          : "com.trello:rxlifecycle-kotlin:${rxlifecycle_version}",
+            "rxlifecycle-component": "com.trello:rxlifecycle-components:${rxlifecycle_version}",
     ]
 
     apt = [
-            "dagger-compiler"         : "com.google.dagger:dagger-compiler:${dagger_version}",
-            "dagger-android-processor": "com.google.dagger:dagger-android-processor:${dagger_version}",
+            "dagger-compiler": "com.google.dagger:dagger-compiler:${dagger_version}",
     ]
 }
 
