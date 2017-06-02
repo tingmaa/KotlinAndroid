@@ -1,6 +1,6 @@
 package unreal.org.ktapp
 
-import org.unreal.core.base.BaseApplication
+import org.unreal.databases.DatabaseApplication
 
 /**
  * <b>类名称：</b> KtApplication <br/>
@@ -12,7 +12,7 @@ import org.unreal.core.base.BaseApplication
  *
  * @version 1.0.0 <br/>
  */
-class KtApplication : BaseApplication() {
+class KtApplication : DatabaseApplication() {
 
     override fun initApplication() {
     }

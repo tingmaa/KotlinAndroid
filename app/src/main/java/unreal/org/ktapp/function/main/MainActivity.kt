@@ -1,8 +1,12 @@
 package unreal.org.ktapp.function.main
 
+import com.raizlabs.android.dbflow.rx2.kotlinextensions.insert
 import kotlinx.android.synthetic.main.activity_main.*
 import org.unreal.core.base.ToolBarActivity
 import org.unreal.core.di.component.CoreComponent
+import org.unreal.databases.model.UserModel
+import org.unreal.pay.Pay
+import org.unreal.pay.payment
 import unreal.org.ktapp.R
 import unreal.org.ktapp.function.main.component.DaggerMainComponent
 import unreal.org.ktapp.function.main.contract.MainContract
@@ -35,6 +39,12 @@ class MainActivity : ToolBarActivity<MainContract.Presenter>() , MainContract.Vi
 
     override fun afterViews() {
         textView.text = "测试输出"
+        button.setOnClickListener {
+            UserModel(name = "xiaoli").insert {
+                toast("user save into databases")
+            }
+        }
+        payment(Pay.WeiXinPay(this))
     }
 
 }

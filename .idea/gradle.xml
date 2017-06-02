@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/configure" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/databases" />
+            <option value="$PROJECT_DIR$/pay" />
             <option value="$PROJECT_DIR$/preference" />
             <option value="$PROJECT_DIR$/widget" />
           </set>
