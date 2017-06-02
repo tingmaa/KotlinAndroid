@@ -23,7 +23,7 @@ import org.unreal.pay.PayFunction
  *
  * @version 1.0.0 <br/>
  */
-class WeiXinPayImplement(val payOrder: Pay.WeiXinPay,
+internal class WeiXinPayImplement(val payOrder: Pay.WeiXinPay,
                          val onSuccess: () -> Unit ,
                          val onError: (String) -> Unit )
     : PayFunction {

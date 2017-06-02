@@ -16,7 +16,7 @@ import org.unreal.pay.PayFunction
  *
  * @version 1.0.0 <br/>
  */
-class AliPayImplement(val payOrder: Pay.AliPay, val onSuccess: () -> Unit, val onError: (String) -> Unit) : PayFunction {
+internal class AliPayImplement(val payOrder: Pay.AliPay, val onSuccess: () -> Unit, val onError: (String) -> Unit) : PayFunction {
 
     override fun payment() {
         checkPluginState {

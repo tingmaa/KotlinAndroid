@@ -15,7 +15,7 @@ import org.unreal.pay.PayFunction
  *
  * @version 1.0.0 <br/>
  */
-class UnionBankPayImplement(val payOrder: Pay.UnionBankPay, val onSuccess: () -> Unit, val onError: (String) -> Unit) : PayFunction {
+internal class UnionBankPayImplement(val payOrder: Pay.UnionBankPay, val onSuccess: () -> Unit, val onError: (String) -> Unit) : PayFunction {
 
     override fun filterResult(result: Intent?) {
         if (result == null) {

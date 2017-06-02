@@ -1,11 +1,13 @@
 package unreal.org.ktapp.function.main
 
+import android.content.Intent
 import com.raizlabs.android.dbflow.rx2.kotlinextensions.insert
 import kotlinx.android.synthetic.main.activity_main.*
 import org.unreal.core.base.ToolBarActivity
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.databases.model.UserModel
 import org.unreal.pay.Pay
+import org.unreal.pay.PayFunction
 import org.unreal.pay.payment
 import unreal.org.ktapp.R
 import unreal.org.ktapp.function.main.component.DaggerMainComponent
@@ -26,6 +28,8 @@ class MainActivity : ToolBarActivity<MainContract.Presenter>() , MainContract.Vi
 
     override fun setTitle(): String = "首页"
 
+    lateinit var payFunction : PayFunction
+
     override fun injectDagger(coreComponent: CoreComponent) {
         DaggerMainComponent
                 .builder()
@@ -40,11 +44,23 @@ class MainActivity : ToolBarActivity<MainContract.Presenter>() , MainContract.Vi
     override fun afterViews() {
         textView.text = "测试输出"
         button.setOnClickListener {
+            //use databases module
             UserModel(name = "xiaoli").insert {
                 toast("user save into databases")
             }
+
+            val unionBankPay = Pay.UnionBankPay(this,"201706021144","01")
+
+
+            payFunction = payment(unionBankPay,{ toast("支付成功")} ,{ toast(it) })
         }
-        payment(Pay.WeiXinPay(this))
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        payFunction.filterResult(data)
+        super.onActivityResult(requestCode, resultCode, data)
+    }
+
+
 
 }
