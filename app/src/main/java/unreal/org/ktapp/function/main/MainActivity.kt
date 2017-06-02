@@ -49,10 +49,11 @@ class MainActivity : ToolBarActivity<MainContract.Presenter>() , MainContract.Vi
                 toast("user save into databases")
             }
 
-            val unionBankPay = Pay.UnionBankPay(this,"201706021144","01")
-
-
-            payFunction = payment(unionBankPay,{ toast("支付成功")} ,{ toast(it) })
+            payFunction = payment(Pay.UnionBankPay.build {
+                activity = this@MainActivity
+                tradeCode = "20170603"
+                serverModel = "01"
+            },{ toast("支付成功")} ,{ toast(it) })
         }
     }
 
