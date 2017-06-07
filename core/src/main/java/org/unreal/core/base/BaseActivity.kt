@@ -7,7 +7,7 @@ import android.widget.Toast
 import com.trello.rxlifecycle.android.RxLifecycleAndroid
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
-import org.unreal.common.widget.window.WaitScreen
+import org.unreal.widget.window.WaitScreen
 import org.unreal.core.base.BaseApplication.Companion.coreComponent
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.core.manager.ActivityTaskManager
