@@ -1,4 +1,4 @@
-package org.unreal.common.widget;
+package org.unreal.widget;
 
 import org.junit.Test;
 

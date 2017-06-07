@@ -1,4 +1,4 @@
-package org.unreal.common.widget.window
+package org.unreal.widget.window
 
 import android.app.Activity
 import android.content.Context
@@ -11,7 +11,7 @@ import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.PopupWindow
 import android.widget.TextView
-import org.unreal.common.widget.R
+import org.unreal.widget.R
 
 
 /**
