@@ -142,6 +142,7 @@ fun payment(payOrder: Pay, onSuccess: () -> Unit, onError: (String) -> Unit): Pa
             functions = AliPayImplement(payOrder, onSuccess, onError)
         }
     }
+    functions.payment()
     return functions
 
 }
