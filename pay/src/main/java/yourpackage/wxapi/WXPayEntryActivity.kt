@@ -11,6 +11,7 @@ import com.tencent.mm.opensdk.modelbase.BaseResp
 import com.tencent.mm.opensdk.openapi.IWXAPI
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
 import com.tencent.mm.opensdk.openapi.WXAPIFactory
+import org.unreal.pay.weixin.WeiXinConfig
 import org.unreal.pay.weixin.WeiXinPayImplement
 
 /**
@@ -50,8 +51,8 @@ class WXPayEntryActivity : Activity(), IWXAPIEventHandler {
         if (resp.type == ConstantsAPI.COMMAND_PAY_BY_WX) {
             //发送广播，为intent添加的String必须一致，接收广播处
             LocalBroadcastManager.getInstance(this)
-                    .sendBroadcast(Intent(WeiXinPayImplement.LOCAL_BROAD_CAST_ACTION)
-                    .putExtra(WeiXinPayImplement.LOCAL_BROAD_EXTRA_CODE, resp.errCode))
+                    .sendBroadcast(Intent(WeiXinConfig.LOCAL_BROAD_CAST_ACTION)
+                    .putExtra(WeiXinConfig.LOCAL_BROAD_EXTRA_CODE, resp.errCode))
         }
         finish()
     }

@@ -25,13 +25,20 @@ import org.unreal.pay.PayFunction
  */
 internal class WeiXinPayImplement(val payOrder: Pay.WeiXinPay,
                          val onSuccess: () -> Unit ,
-                         val onError: (String) -> Unit )
+                         val onError: (String) -> Unit)
     : PayFunction {
 
-    val wxApi: IWXAPI = WXAPIFactory.createWXAPI(payOrder.activity, "")
+    private var wxApi =  WXAPIFactory.createWXAPI(payOrder.activity, null)
+
     lateinit var errorMsg : String
 
     lateinit var receiver: BroadcastReceiver
+
+    init {
+        wxApi.registerApp(payOrder.appId)
+        registerLocalBroadCast()
+    }
+
 
     override fun checkPluginState(onCheckState : (Boolean) -> Unit) {
         var isOk = true
@@ -58,8 +65,8 @@ internal class WeiXinPayImplement(val payOrder: Pay.WeiXinPay,
                request.timeStamp = payOrder.timeStamp
                request.sign = payOrder.sign
                request.signType = payOrder.signType
-               wxApi.sendReq(request)
-               registerLocalBroadCast()
+               val isCallState = wxApi.sendReq(request)
+               println("isCallState = $isCallState")
            }else{
                onError(errorMsg)
            }
@@ -72,12 +79,12 @@ internal class WeiXinPayImplement(val payOrder: Pay.WeiXinPay,
 //        -1	错误	可能的原因：签名错误、未注册APPID、项目设置APPID不正确、注册的APPID与设置的不匹配、其他异常等。
 //        -2	用户取消	无需处理。发生场景：用户不支付了，点击取消，返回APP。
 
-        val filter = IntentFilter(LOCAL_BROAD_CAST_ACTION)
+        val filter = IntentFilter(WeiXinConfig.LOCAL_BROAD_CAST_ACTION)
         //        0 成功	展示成功页面
 //  -1	错误       -2	用户取消
         receiver = object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent) {
-                val errCode = intent.getIntExtra("errCode", -1)
+                val errCode = intent.getIntExtra(WeiXinConfig.LOCAL_BROAD_EXTRA_CODE,  -1)
                 if (errCode == BaseResp.ErrCode.ERR_OK) { //        0 成功	展示成功页面
                     onSuccess()
                 } else {//  -1	错误       -2	用户取消
@@ -99,8 +106,9 @@ internal class WeiXinPayImplement(val payOrder: Pay.WeiXinPay,
     override fun filterResult(result: Intent?) {
     }
 
-    companion object {
-        const val LOCAL_BROAD_CAST_ACTION = "org.unreal.pay.weiXinPayResult"
-        const val LOCAL_BROAD_EXTRA_CODE = "StateCode"
-    }
+}
+
+object WeiXinConfig{
+    const val LOCAL_BROAD_CAST_ACTION = "org.unreal.pay.weiXinPayResult"
+    const val LOCAL_BROAD_EXTRA_CODE = "StateCode"
 }
