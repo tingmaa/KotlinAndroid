@@ -27,7 +27,7 @@ internal class UnionBankPayImplement(val payOrder: Pay.UnionBankPay, val onSucce
          */
         val resultStatus = result.extras.getString("pay_result")
         when (resultStatus) {
-            "success" -> onSuccess
+            "success" -> onSuccess()
             "fail" -> onError("银联支付失败")
             "cancel" -> onError("银联支付失败,用户取消了支付")
         }

@@ -1,1 +1,1 @@
-include ':app', ':core', ':preference', ':configure', ':widget', ':databases', ':pay'
+include ':app', ':core', ':preference', ':configure', ':widget', ':databases', ':pay', ':message'

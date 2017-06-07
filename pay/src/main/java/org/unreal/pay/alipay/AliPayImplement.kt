@@ -26,7 +26,7 @@ internal class AliPayImplement(val payOrder: Pay.AliPay, val onSuccess: () -> Un
                 val result = PayResult(payTask.payV2(payOrder.order, true))
                 payOrder.activity.runOnUiThread {
                     when (result.resultStatus) {
-                        "9000" -> onSuccess
+                        "9000" -> onSuccess()
                         "8000" -> onError("支付宝支付结果确认中")
                         else -> onError("支付宝支付失败")
                     }
