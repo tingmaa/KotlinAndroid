@@ -30,7 +30,7 @@ dependencies {
     })
     testImplementation 'junit:junit:4.12'
 
-    compile project (':databases')
+    api project (':databases')
     kapt rootProject.ext.apt["dagger-compiler"]
     kapt rootProject.ext.apt["dbflow-compiler"]
 }

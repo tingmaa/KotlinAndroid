@@ -21,21 +21,15 @@ android {
     }
 
 }
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    implementation project (":widget")
     implementation rootProject.ext.dependencies["appcompat-v7"]
-    implementation files('libs/alipaySdk-20161222.jar')
-    implementation files('libs/libammsdk.jar')
-    implementation files('libs/UPPayAssistEx.jar')
-    implementation files('libs/UPPayPluginExPro.jar')
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlin_version}"
-    androidTestImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 
-repositories {
-    mavenCentral()
-}
