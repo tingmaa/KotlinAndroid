@@ -3,6 +3,7 @@ package unreal.org.ktapp.function.main
 import android.content.Intent
 import com.raizlabs.android.dbflow.rx2.kotlinextensions.insert
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.toast
 import org.unreal.core.base.ToolBarActivity
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.databases.model.UserModel

@@ -11,6 +11,7 @@ def rxandroid_version = "2.0.1"
 def rxlifecycle_version = "1.0"
 def dbflow_version = "4.0.2"
 def sqlcipher_version = "3.5.4"
+def anko_version = "0.10.1"
 ext {
     isDebug = true
     android = [
@@ -43,6 +44,8 @@ ext {
             "dbflow-kotlin"        : "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${dbflow_version}",
             "dbflow-rx"            : "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}",
             "dbflow-rx-kotlin"     : "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:${dbflow_version}",
+            "anko-commons"         : "org.jetbrains.anko:anko-commons:${anko_version}",
+
     ]
 
     apt = [

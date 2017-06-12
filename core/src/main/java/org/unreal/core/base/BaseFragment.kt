@@ -5,12 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.trello.rxlifecycle.components.RxFragment
 import io.reactivex.disposables.CompositeDisposable
-import org.unreal.widget.window.WaitScreen
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.core.manager.ActivityTaskManager
+import org.unreal.widget.window.WaitScreen
 import java.util.*
 import javax.inject.Inject
 
@@ -77,10 +76,6 @@ abstract class BaseFragment<P : BasePresenter> : RxFragment(), BaseView {
     override fun closeWait() {
         val waitScreen = waitScreens.pop()
         waitScreen.dismiss()
-    }
-
-    override fun toast(message: CharSequence) {
-        Toast.makeText(activity,message, Toast.LENGTH_LONG).show()
     }
 
     override fun finish() {

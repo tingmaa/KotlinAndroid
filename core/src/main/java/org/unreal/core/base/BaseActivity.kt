@@ -3,14 +3,13 @@ package org.unreal.core.base
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import com.trello.rxlifecycle.android.RxLifecycleAndroid
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
-import org.unreal.widget.window.WaitScreen
 import org.unreal.core.base.BaseApplication.Companion.coreComponent
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.core.manager.ActivityTaskManager
+import org.unreal.widget.window.WaitScreen
 import java.util.*
 import javax.inject.Inject
 
@@ -71,10 +70,6 @@ abstract class BaseActivity<P : BasePresenter> : RxAppCompatActivity(), BaseView
     override fun closeWait() {
         val waitScreen = waitScreens.pop()
         waitScreen.dismiss()
-    }
-
-    override fun toast(message: CharSequence) {
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show()
     }
 
     override fun finish() {

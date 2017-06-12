@@ -24,8 +24,6 @@ interface BaseView {
 
     fun closeWait()
 
-    fun toast(message: CharSequence)
-
     fun finish()
 
     fun finishAll()

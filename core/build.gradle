@@ -72,7 +72,9 @@ dependencies {
     compile rootProject.ext.dependencies["rxandroid"]
     compile rootProject.ext.dependencies["rxlifecycle"]
     compile rootProject.ext.dependencies["rxlifecycle-component"]
+    compile rootProject.ext.dependencies["anko-commons"]
     testCompile 'junit:junit:4.12'
     kapt rootProject.ext.apt["dagger-compiler"]
-
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlin_version}"
 }
