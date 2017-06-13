@@ -25,12 +25,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation 'junit:junit:4.12'
-
-    compile project (':databases')
+    api project (':databases')
     kapt rootProject.ext.apt["dagger-compiler"]
     kapt rootProject.ext.apt["dbflow-compiler"]
 }

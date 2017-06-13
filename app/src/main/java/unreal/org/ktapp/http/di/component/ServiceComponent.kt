@@ -3,6 +3,7 @@ package unreal.org.ktapp.http.di.component
 import dagger.Component
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.core.di.scope.NetScope
+import unreal.org.ktapp.function.main.presenter.MainPresenterImpl
 import unreal.org.ktapp.http.di.module.ServiceModule
 
 /**
@@ -20,5 +21,6 @@ import unreal.org.ktapp.http.di.module.ServiceModule
 @Component(dependencies = arrayOf(CoreComponent::class),
         modules = arrayOf(ServiceModule::class))
 interface ServiceComponent {
+    fun inject(mainPresenterImpl : MainPresenterImpl)
 
 }

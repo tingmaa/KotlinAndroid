@@ -2,6 +2,7 @@ package unreal.org.ktapp.function.main
 
 import android.content.Intent
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.toast
 import org.unreal.core.base.ToolBarActivity
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.pay.PayFunction
@@ -70,6 +71,9 @@ class MainActivity : ToolBarActivity<MainContract.Presenter>() , MainContract.Vi
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun result() {
+        toast("hello world")
+    }
 
 
 }
