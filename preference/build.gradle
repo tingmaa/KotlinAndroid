@@ -51,9 +51,4 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation rootProject.ext.dependencies["appcompat-v7"]
-    androidTestImplementation 'junit:junit:4.12'
 }

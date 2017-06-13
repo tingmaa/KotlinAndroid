@@ -60,10 +60,6 @@ android {
 
 
     android {
-        configurations.all {
-            resolutionStrategy.force 'com.google.code.findbugs:jsr305:2.0.1'
-        }
-
 
         packagingOptions {
             exclude 'META-INF/DEPENDENCIES.txt'
@@ -129,17 +125,10 @@ def getVersionName(boolean isRelease) {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation 'junit:junit:4.12'
     api project(':databases')
     api project(':pay')
     api project(':web')
     kapt rootProject.ext.apt["dagger-compiler"]
     kapt rootProject.ext.apt["dbflow-compiler"]
-    implementation 'com.android.support:design:25.3.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.android.support:support-vector-drawable:25.3.1'
 }
 

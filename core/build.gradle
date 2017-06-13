@@ -24,10 +24,6 @@ android {
 
 
     android {
-        configurations.all {
-            resolutionStrategy.force 'com.google.code.findbugs:jsr305:2.0.1'
-        }
-
 
         packagingOptions {
             exclude 'META-INF/DEPENDENCIES.txt'
@@ -53,9 +49,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     api project(':configure')
     api project(':widget')
     api rootProject.ext.dependencies["dagger"]
@@ -63,9 +56,9 @@ dependencies {
     api rootProject.ext.dependencies["rxkotlin"]
     api rootProject.ext.dependencies["rxjava"]
     api rootProject.ext.dependencies["rxandroid"]
-    api rootProject.ext.dependencies["rxlifecycle"]
-    api rootProject.ext.dependencies["rxlifecycle-component"]
     api rootProject.ext.dependencies["anko-commons"]
+    implementation rootProject.ext.dependencies["rxlifecycle"]
+    implementation rootProject.ext.dependencies["rxlifecycle-component"]
     implementation rootProject.ext.dependencies["retrofit-adapter"]
     implementation rootProject.ext.dependencies["retrofit-covert"]
     implementation rootProject.ext.dependencies["okhttp"]
@@ -73,9 +66,5 @@ dependencies {
     implementation rootProject.ext.dependencies["okhttp-cache"]
     implementation rootProject.ext.dependencies["stetho"]
     implementation rootProject.ext.dependencies["stetho-okhttp"]
-    androidTestImplementation 'junit:junit:4.12'
     kapt rootProject.ext.apt["dagger-compiler"]
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlin_version}"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 }

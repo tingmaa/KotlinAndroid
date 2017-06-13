@@ -23,12 +23,14 @@ android {
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestApi('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation rootProject.ext.dependencies["appcompat-v7"]
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlin_version}"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlin_version}"
-    androidTestImplementation 'junit:junit:4.12'
+    api rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["constraint-layout"]
+    api rootProject.ext.dependencies["support-design"]
+    api rootProject.ext.dependencies["support-vector-drawable"]
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre8:${kotlin_version}"
+    testApi 'junit:junit:4.12'
 }
