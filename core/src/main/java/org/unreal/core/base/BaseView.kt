@@ -2,7 +2,7 @@ package org.unreal.core.base
 
 import android.app.Activity
 import android.content.Context
-import android.os.Bundle
+import io.reactivex.*
 
 
 /**
@@ -17,6 +17,7 @@ import android.os.Bundle
  */
 
 interface BaseView {
+
     fun showWait()
 
     fun showWait(message: String)
@@ -32,5 +33,16 @@ interface BaseView {
     fun finish(vararg activityClasses: Class<out Activity>)
 
     fun getContext(): Context
-    fun onCreate(savedInstanceState: Bundle?)
+
+    fun <T> bindObservableToLifecycle(): ObservableTransformer<T, T>
+
+    fun <T> bindSingleToLifecycle(): SingleTransformer<T, T>
+
+    fun <T> bindFlowableToLifecycle(): FlowableTransformer<T, T>
+
+    fun <T> bindMaybeToLifecycle(): MaybeTransformer<T, T>
+
+    fun bindCompletableToLifecycle(): CompletableTransformer
+
+
 }

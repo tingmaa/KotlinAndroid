@@ -3,7 +3,6 @@ package org.unreal.core.base
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
-import com.trello.rxlifecycle2.RxLifecycle
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import org.unreal.core.base.BaseApplication.Companion.coreComponent
@@ -41,7 +40,6 @@ abstract class BaseActivity<P : BasePresenter> : RxAppCompatActivity(), BaseView
             setContentView(bindLayout())
         }
         injectDagger(coreComponent)
-        presenter.bindLifeCycle(RxLifecycle.bind(lifecycle()))
         afterViews()
         ActivityTaskManager.instance.pushActivity(this)
     }

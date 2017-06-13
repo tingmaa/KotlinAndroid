@@ -63,6 +63,9 @@ class MainActivity : ToolBarActivity<MainContract.Presenter>() , MainContract.Vi
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun result() {
+        toast("hello world")
+    }
 
 
 }

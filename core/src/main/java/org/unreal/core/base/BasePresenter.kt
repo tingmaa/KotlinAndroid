@@ -1,7 +1,5 @@
 package org.unreal.core.base
 
-import com.trello.rxlifecycle2.LifecycleTransformer
-
 
 /**
  * <b>类名称：</b> BasePresenter <br/>
@@ -14,6 +12,4 @@ import com.trello.rxlifecycle2.LifecycleTransformer
  * @version 1.0.0 <br/>
  */
 interface BasePresenter {
-
-    fun bindLifeCycle(lifecycleTransformer: LifecycleTransformer<Any>)
 }

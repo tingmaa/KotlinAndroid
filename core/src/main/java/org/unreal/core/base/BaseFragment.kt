@@ -6,7 +6,6 @@ import android.support.annotation.Nullable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.trello.rxlifecycle2.RxLifecycle
 import com.trello.rxlifecycle2.components.support.RxFragment
 import io.reactivex.disposables.CompositeDisposable
 import org.unreal.core.di.component.CoreComponent
@@ -39,7 +38,6 @@ abstract class BaseFragment<P : BasePresenter> : RxFragment(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectDagger(BaseApplication.coreComponent)
-        presenter.bindLifeCycle(RxLifecycle.bind(lifecycle()))
         compositeDisposable = CompositeDisposable()
     }
 

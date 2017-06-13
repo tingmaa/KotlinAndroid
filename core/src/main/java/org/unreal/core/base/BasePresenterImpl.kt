@@ -1,6 +1,5 @@
 package org.unreal.core.base
 
-import com.trello.rxlifecycle2.LifecycleTransformer
 import org.unreal.core.di.component.CoreComponent
 
 
@@ -16,15 +15,9 @@ import org.unreal.core.di.component.CoreComponent
  */
 abstract class BasePresenterImpl<out V : BaseView>(val view: V) : BasePresenter {
 
-    var lifecycleTransformer: LifecycleTransformer<Any>? = null
-
     init {
         injectComponent(BaseApplication.coreComponent)
     }
 
     abstract fun injectComponent(coreComponent: CoreComponent)
-
-    override fun bindLifeCycle(lifecycleTransformer: LifecycleTransformer<Any>) {
-        this.lifecycleTransformer = lifecycleTransformer
-    }
 }

@@ -32,8 +32,11 @@ class MainPresenterImpl(view: MainContract.View)
 
     fun loadData(){
         userService.login()
-                .compose(lifecycleTransformer)
-
+//                .compose(view.bindToLifecycle())
+                .doOnSubscribe { view.showWait() }
+                .subscribe{
+                    view.hideWait { view.result()}
+                }
     }
 
 

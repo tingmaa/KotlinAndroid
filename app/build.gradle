@@ -125,10 +125,9 @@ def getVersionName(boolean isRelease) {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(':databases')
-    api project(':pay')
-    api project(':web')
+    implementation project(':databases')
+    implementation project(':pay')
+    implementation project(':web')
     kapt rootProject.ext.apt["dagger-compiler"]
-    kapt rootProject.ext.apt["dbflow-compiler"]
 }
 

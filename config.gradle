@@ -36,7 +36,7 @@ ext {
             "rxkotlin"               : "io.reactivex.rxjava2:rxkotlin:${rxkotlin_version}",
             "rxjava"                 : "io.reactivex.rxjava2:rxjava:${rxjava_version}",
             "rxandroid"              : "io.reactivex.rxjava2:rxandroid:${rxandroid_version}",
-            "rxlifecycle"            : "com.trello.rxlifecycle2:rxlifecycle-kotlin:${rxlifecycle_version}",
+            "rxlifecycle"            : "com.trello.rxlifecycle2:rxlifecycle:${rxlifecycle_version}",
             "rxlifecycle-component"  : "com.trello.rxlifecycle2:rxlifecycle-components:${rxlifecycle_version}",
             "dbflow-core"            : "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}",
             "dbflow"                 : "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}",
