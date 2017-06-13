@@ -2,15 +2,15 @@ package org.unreal.core.base
 
 import android.app.Activity
 import android.os.Bundle
+import android.support.annotation.Nullable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import com.trello.rxlifecycle.components.RxFragment
+import com.trello.rxlifecycle2.components.support.RxFragment
 import io.reactivex.disposables.CompositeDisposable
-import org.unreal.common.widget.window.WaitScreen
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.core.manager.ActivityTaskManager
+import org.unreal.widget.window.WaitScreen
 import java.util.*
 import javax.inject.Inject
 
@@ -41,8 +41,8 @@ abstract class BaseFragment<P : BasePresenter> : RxFragment(), BaseView {
         compositeDisposable = CompositeDisposable()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View {
-        val view = inflater.inflate(bindLayout(), container, false)
+    override fun onCreateView(inflater: LayoutInflater?, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
+        val view = inflater?.inflate(bindLayout(), container, false)
         return view
     }
 
@@ -77,10 +77,6 @@ abstract class BaseFragment<P : BasePresenter> : RxFragment(), BaseView {
     override fun closeWait() {
         val waitScreen = waitScreens.pop()
         waitScreen.dismiss()
-    }
-
-    override fun toast(message: CharSequence) {
-        Toast.makeText(activity,message, Toast.LENGTH_LONG).show()
     }
 
     override fun finish() {

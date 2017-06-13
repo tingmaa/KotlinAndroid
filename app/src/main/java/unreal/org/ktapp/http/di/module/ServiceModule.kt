@@ -3,9 +3,9 @@ package unreal.org.ktapp.http.di.module
 import dagger.Module
 import dagger.Provides
 import org.unreal.core.di.scope.LocalRetrofit
+import org.unreal.core.di.scope.NetScope
 import retrofit2.Retrofit
 import unreal.org.ktapp.http.service.UserService
-import javax.inject.Singleton
 
 /**
  * <b>类名称：</b> ServiceModule <br/>
@@ -20,7 +20,7 @@ import javax.inject.Singleton
 @Module
 class ServiceModule {
 
-    @Singleton
+    @NetScope
     @Provides
     fun providerUserService(@LocalRetrofit retrofit: Retrofit)
             = retrofit.create(UserService::class.java)

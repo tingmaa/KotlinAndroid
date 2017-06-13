@@ -1,0 +1,72 @@
+debugversion code is --->1706131119
+debugversion name is --->1.0.15.170613.111957.e581c33
+releaseversion code is --->1000015
+releaseversion name is --->1.0.15.e581c33
+Build cache is an incubating feature.
+Using directory (/home/lincoln/.gradle/caches/build-cache-1) as local build cache, push is enabled.
+:core:dependencies
+
+------------------------------------------------------------
+Project :core
+------------------------------------------------------------
+
+androidJacocoAgent - The Jacoco agent to use to get coverage data.
+\--- org.jacoco:org.jacoco.agent:0.7.4.201502262128
+
+androidJacocoAnt - The Jacoco ant tasks to use to get execute Gradle tasks.
+\--- org.jacoco:org.jacoco.ant:0.7.4.201502262128
+     +--- org.jacoco:org.jacoco.core:0.7.4.201502262128
+     |    \--- org.ow2.asm:asm-debug-all:5.0.1
+     +--- org.jacoco:org.jacoco.report:0.7.4.201502262128
+     |    +--- org.jacoco:org.jacoco.core:0.7.4.201502262128 (*)
+     |    \--- org.ow2.asm:asm-debug-all:5.0.1
+     \--- org.jacoco:org.jacoco.agent:0.7.4.201502262128
+
+androidTestAnnotationProcessor - Classpath for the annotation processor for 'androidTest'. (n)
+No dependencies
+
+androidTestApi - API dependencies for 'androidTest' sources. (n)
+No dependencies
+
+androidTestCompile - Compile dependencies for 'androidTest' sources (deprecated: use 'androidTestImplementation' instead). (n)
+No dependencies
+
+androidTestCompileOnly - Compile only dependencies for 'androidTest' sources. (n)
+No dependencies
+
+androidTestImplementation - Implementation only dependencies for 'androidTest' sources. (n)
+No dependencies
+
+androidTestProvided - Provided dependencies for 'androidTest' sources (deprecated: use 'androidTestCompileOnly' instead). (n)
+No dependencies
+
+androidTestPublish - Publish dependencies for 'androidTest' sources (deprecated: use 'androidTestRuntimeOnly' instead). (n)
+No dependencies
+
+androidTestRuntimeOnly - Runtime only dependencies for 'androidTest' sources. (n)
+No dependencies
+
+androidTestUtil - Additional APKs used during instrumentation testing.
+No dependencies
+
+androidTestWearApp - Link to a wear app to embed for object 'androidTest'. (n)
+No dependencies
+
+annotationProcessor - Classpath for the annotation processor for 'main'. (n)
+No dependencies
+
+api - API dependencies for 'main' sources. (n)
++--- project configure (n)
++--- project widget (n)
++--- com.google.dagger:dagger:2.11 (n)
++--- com.squareup.retrofit2:retrofit:2.3.0 (n)
++--- io.reactivex.rxjava2:rxkotlin:2.0.3 (n)
++--- io.reactivex.rxjava2:rxjava:2.1.0 (n)
++--- io.reactivex.rxjava2:rxandroid:2.0.1 (n)
+\--- org.jetbrains.anko:anko-commons:0.10.1 (n)
+
+archives - Configuration for archive artifacts.
+:core:dependencies FAILED
+
+BUILD FAILED in 4s
+1 actionable task: 1 executed, 0 avoided (0%)

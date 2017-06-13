@@ -2,7 +2,22 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'blockcanaryex'
+block {
+    debugEnabled true //在debug模式下开启方法采样，默认为true
+    releaseEnabled false //在release模式下开启方法采样，默认为false
+    excludePackages = [] //不希望进行方法采样的包名, 比如: ['com.android', 'android.support']
+    excludeClasses = [] //不希望进行方法采样的类名
+    includePackages = [] //指定开启方法采样的包名，如果不为空，则其它没有包括进来的包都不会开启方法采样
 
+    scope {
+        project true //开启主项目代码方法采样，默认为true
+        projectLocalDep true //开启主项目本地libs代码(比如.jar)方法采样，默认为false,
+        subProject true //开启子项目代码方法采样，默认为true
+        subProjectLocalDep true //开启子项目本地libs方法采样，默认为false
+        externalLibraries true //开启第三方libs方法采样，默认为false
+    }
+}
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
     buildToolsVersion rootProject.ext.android.buildToolsVersion
@@ -24,10 +39,6 @@ android {
 
 
     android {
-        configurations.all {
-            resolutionStrategy.force 'com.google.code.findbugs:jsr305:2.0.1'
-        }
-
 
         packagingOptions {
             exclude 'META-INF/DEPENDENCIES.txt'
@@ -52,27 +63,30 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile project(':configure')
-    compile project(':widget')
-    compile rootProject.ext.dependencies["dagger"]
-    compile rootProject.ext.dependencies["retrofit"]
-    compile rootProject.ext.dependencies["retrofit-adapter"]
-    compile rootProject.ext.dependencies["retrofit-covert"]
-    compile rootProject.ext.dependencies["okhttp"]
-    compile rootProject.ext.dependencies["okhttp-logging"]
-    compile rootProject.ext.dependencies["okhttp-cache"]
-    compile rootProject.ext.dependencies["stetho"]
-    compile rootProject.ext.dependencies["stetho-okhttp"]
-    compile rootProject.ext.dependencies["rxkotlin"]
-    compile rootProject.ext.dependencies["rxjava"]
-    compile rootProject.ext.dependencies["rxandroid"]
-    compile rootProject.ext.dependencies["rxlifecycle"]
-    compile rootProject.ext.dependencies["rxlifecycle-component"]
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':configure')
+    api project(':widget')
+    api rootProject.ext.dependencies["dagger"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["rxkotlin"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["anko-commons"]
+    api rootProject.ext.dependencies["rxlifecycle"]
+    api rootProject.ext.dependencies["rxlifecycle-component"]
+    implementation rootProject.ext.dependencies["retrofit-adapter"]
+    implementation rootProject.ext.dependencies["retrofit-covert"]
+    implementation rootProject.ext.dependencies["okhttp"]
+    implementation rootProject.ext.dependencies["okhttp-logging"]
+    implementation rootProject.ext.dependencies["okhttp-cache"]
+    implementation rootProject.ext.dependencies["stetho"]
+    implementation rootProject.ext.dependencies["stetho-okhttp"]
+    
+    implementation rootProject.ext.dependencies["block-canaryex"]
+    implementation rootProject.ext.dependencies["jessyan-progress"]
+    
     kapt rootProject.ext.apt["dagger-compiler"]
-
+}
+repositories {
+    mavenCentral()
 }

@@ -1,7 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 apply from : 'config.gradle'
+apply plugin: 'project-report'
 buildscript {
-    ext.kotlin_version = '1.1.2-4'
+    ext.kotlin_version = '1.1.2-5'
 
     repositories {
          maven {
@@ -14,7 +15,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.0-alpha3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
+        classpath 'com.android.tools.build:gradle:1.5.0' //version must >= 1.5.0
+        classpath 'com.letv.sarrsdesktop:BlockCanaryExPlugin:0.9.9.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -23,12 +25,17 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
-        maven { url 'https://dl.google.com/dl/android/maven2/' }
+        maven { url 'https://dl.google.com/dl/androidde/maven2/' }
         mavenCentral()
         maven { url "https://www.jitpack.io" }
+        maven {url 'https://dl.bintray.com/jetbrains/anko'}
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+htmlDependencyReport {
+    projects = project.allprojects
 }

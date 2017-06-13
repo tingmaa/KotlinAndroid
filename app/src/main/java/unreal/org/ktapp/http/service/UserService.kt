@@ -1,6 +1,6 @@
 package unreal.org.ktapp.http.service
 
-import io.reactivex.Single
+import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -16,5 +16,5 @@ import retrofit2.http.GET
  */
 interface UserService{
     @GET("login")
-    fun login() : Single<Response<Unit>>
+    fun login() : Observable<Response<Unit>>
 }

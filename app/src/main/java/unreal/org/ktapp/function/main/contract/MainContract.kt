@@ -15,7 +15,7 @@ import org.unreal.core.base.BaseView
  */
 class MainContract{
     interface View : BaseView {
-
+        fun result()
     }
 
     interface Presenter : BasePresenter{
