@@ -11,6 +11,12 @@ def rxandroid_version = "2.0.1"
 def rxlifecycle_version = "1.0"
 def dbflow_version = "4.0.2"
 def sqlcipher_version = "3.5.4"
+def super_design_version = "25.3.1"
+def rxpermission_version = "0.9.4@aar"
+def anko_sdk_version = "0.9.1"
+def anko_appcompat_version = "0.9.1"
+def block_canaryex_version = "0.9.9.0"
+def jessyan_progress_version = "1.2.1"
 ext {
     isDebug = true
     android = [
@@ -22,6 +28,7 @@ ext {
 
     dependencies = [
             "appcompat-v7"         : "com.android.support:appcompat-v7:${appcompat_v7_version}",
+            "super-design"         : "com.android.support:design:${super_design_version}",
             "dagger"               : "com.google.dagger:dagger:${dagger_version}",
             "retrofit"             : "com.squareup.retrofit2:retrofit:${retrofit_version}",
             "retrofit-adapter"     : "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}",
@@ -43,6 +50,11 @@ ext {
             "dbflow-kotlin"        : "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${dbflow_version}",
             "dbflow-rx"            : "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}",
             "dbflow-rx-kotlin"     : "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:${dbflow_version}",
+            "rxpermission"         : "com.tbruyelle.rxpermissions2:rxpermissions:${rxpermission_version}",
+            "anko-sdk"             : "org.jetbrains.anko:anko-sdk15:${anko_sdk_version}",
+            "anko-appcompat"       : "org.jetbrains.anko:anko-appcompat-v7:${anko_appcompat_version}",
+            "block-canaryex"       : "com.letv.sarrsdesktop:BlockCanaryExJRT:${block_canaryex_version}",
+            "jessyan-progress"       : "me.jessyan:progressmanager:${jessyan_progress_version}",
     ]
 
     apt = [

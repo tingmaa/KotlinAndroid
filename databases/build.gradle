@@ -39,4 +39,8 @@ dependencies {
     compile rootProject.ext.dependencies["dbflow-kotlin"]
     compile rootProject.ext.dependencies["dbflow-rx-kotlin"]
     kapt rootProject.ext.apt["dbflow-compiler"]
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

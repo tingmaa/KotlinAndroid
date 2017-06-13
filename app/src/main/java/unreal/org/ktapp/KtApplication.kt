@@ -2,6 +2,7 @@ package unreal.org.ktapp
 
 import org.unreal.databases.DatabaseApplication
 
+
 /**
  * <b>类名称：</b> KtApplication <br/>
  * <b>类描述：</b> <br/>
@@ -15,6 +16,7 @@ import org.unreal.databases.DatabaseApplication
 class KtApplication : DatabaseApplication() {
 
     override fun initApplication() {
+
     }
 
 }
