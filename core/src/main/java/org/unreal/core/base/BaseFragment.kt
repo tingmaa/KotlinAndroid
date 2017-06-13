@@ -2,10 +2,12 @@ package org.unreal.core.base
 
 import android.app.Activity
 import android.os.Bundle
+import android.support.annotation.Nullable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.trello.rxlifecycle.components.RxFragment
+import com.trello.rxlifecycle2.RxLifecycle
+import com.trello.rxlifecycle2.components.support.RxFragment
 import io.reactivex.disposables.CompositeDisposable
 import org.unreal.core.di.component.CoreComponent
 import org.unreal.core.manager.ActivityTaskManager
@@ -37,11 +39,12 @@ abstract class BaseFragment<P : BasePresenter> : RxFragment(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectDagger(BaseApplication.coreComponent)
+        presenter.bindLifeCycle(RxLifecycle.bind(lifecycle()))
         compositeDisposable = CompositeDisposable()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View {
-        val view = inflater.inflate(bindLayout(), container, false)
+    override fun onCreateView(inflater: LayoutInflater?, @Nullable container: ViewGroup?, @Nullable savedInstanceState: Bundle?): View? {
+        val view = inflater?.inflate(bindLayout(), container, false)
         return view
     }
 

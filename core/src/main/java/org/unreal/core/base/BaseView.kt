@@ -2,6 +2,7 @@ package org.unreal.core.base
 
 import android.app.Activity
 import android.content.Context
+import android.os.Bundle
 
 
 /**
@@ -31,4 +32,5 @@ interface BaseView {
     fun finish(vararg activityClasses: Class<out Activity>)
 
     fun getContext(): Context
+    fun onCreate(savedInstanceState: Bundle?)
 }

@@ -3,6 +3,7 @@ package unreal.org.ktapp.function.main.presenter
 import org.unreal.core.base.BasePresenterImpl
 import org.unreal.core.di.component.CoreComponent
 import unreal.org.ktapp.function.main.contract.MainContract
+import unreal.org.ktapp.http.di.component.DaggerServiceComponent
 import unreal.org.ktapp.http.service.UserService
 import javax.inject.Inject
 
@@ -26,6 +27,13 @@ class MainPresenterImpl(view: MainContract.View)
 
 
     override fun injectComponent(coreComponent: CoreComponent) {
+        DaggerServiceComponent.builder().coreComponent(coreComponent).build().inject(this)
+    }
+
+    fun loadData(){
+        userService.login()
+                .compose(lifecycleTransformer)
+
     }
 
 
